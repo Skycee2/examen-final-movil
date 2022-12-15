@@ -35,6 +35,9 @@ export class RegistrarPage implements OnInit {
   constructor(private database: FirebaseService, private router: Router, private validacionesService: ValidacionesService, private alertController: AlertController) { }
 
   ngOnInit() {
+    this.usuario.patchValue({
+    correo: '@duocuc.cl'
+    });
   }
 
   registrar() {
@@ -53,12 +56,11 @@ export class RegistrarPage implements OnInit {
       (res) => {
         const dominio = this.obtenerDominio(res.email);
         let setTipo = '';
-        if (dominio === 'profesor.duoc.cl') {
-          setTipo = 'profesor'
-        } else if (dominio === 'duocuc.cl') {
+        if (dominio === 'duocuc.cl') {
           setTipo = 'alumno'
-        } else {
-          setTipo = 'administrador'
+        }else{
+          return(this.presentAlertError);
+          
         }
 
         const usuarioTemp = {
@@ -79,8 +81,8 @@ export class RegistrarPage implements OnInit {
         )
       },
     )
-
   }
+
 
 
   obtenerDominio(correo: string) {
@@ -91,6 +93,15 @@ export class RegistrarPage implements OnInit {
   async presentAlert(mensaje:string) {
     const alert = await this.alertController.create({
       header: mensaje,
+      subHeader: '',
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
+
+  async presentAlertError(mensaje:string) {
+    const alert = await this.alertController.create({
+      header: 'Error, el rut debe ser institucional',
       subHeader: '',
       buttons: ['OK'],
     });

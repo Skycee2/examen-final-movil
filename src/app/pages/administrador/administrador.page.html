@@ -8,7 +8,7 @@
   </ion-header>
 
   <ion-card-content>
-    <form [formGroup]="usuario" (ngSubmit)="registrar()">  
+    <form [formGroup]="usuario" (ngSubmit)="registrar()">
       <ion-item>
         <ion-label position="stacked">Rut:</ion-label>
         <ion-input type="text" placeholder="Ingrese rut con puntos y guión" formControlName="rut"></ion-input>
@@ -20,25 +20,27 @@
       </ion-item>
 
       <ion-item>
+        <ion-label> </ion-label>
+        <ion-select slot="start" placeholder="tipo de usuario" (ionChange)="handleChange($event)"
+          formControlName="tipo">
+          <ion-select-option *ngFor="let j of tipoUsuario">{{j.tipo_usuario}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
         <ion-label position="stacked">Correo institucional:</ion-label>
         <ion-input type="text" placeholder="Ingrese correo" formControlName="correo"></ion-input>
       </ion-item>
-    
+
       <ion-item>
         <ion-label position="stacked">Fecha nacimiento:</ion-label>
-        <ion-input type="date" placeholder="Ingrese fecha nacimiento" formControlName="fecha_nac" [(ngModel)]="fecha_nac"></ion-input>
+        <ion-input type="date" placeholder="Ingrese fecha nacimiento" formControlName="fecha_nac"
+          [(ngModel)]="fecha_nac"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="stacked">Semestre</ion-label>
         <ion-input type="text" placeholder="Ingrese semestre" formControlName="semestre"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label> </ion-label>
-        <ion-select slot="start" placeholder="tipo de usuario" formControlName="tipo_usuario">
-          <ion-select-option *ngFor="let j of tipo_usuario">{{j.tipo_usuario}}</ion-select-option>
-        </ion-select>
       </ion-item>
 
       <ion-item>
@@ -48,7 +50,8 @@
 
       <ion-item>
         <ion-label position="stacked">Repita Contraseña:</ion-label>
-        <ion-input type="password" placeholder="Ingrese nuevamente contraseña" [(ngModel)]="verificar_password" [ngModelOptions]="{standalone: 'true'}"></ion-input>
+        <ion-input type="password" placeholder="Ingrese nuevamente contraseña" [(ngModel)]="verificar_password"
+          [ngModelOptions]="{standalone: 'true'}"></ion-input>
       </ion-item>
 
       <ion-button type="submit" color="warning">Registrar</ion-button>
@@ -57,7 +60,7 @@
     </form>
   </ion-card-content>
 
-  <ion-card-content> 
+  <ion-card-content>
     <h1>Lista de usuarios</h1>
     <div *ngIf="usuario.length != 0; else elseBlock">
       <ion-list *ngFor="let usuario of usuarios">
