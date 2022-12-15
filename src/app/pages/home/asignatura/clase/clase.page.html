@@ -1,0 +1,46 @@
+
+<ion-content>
+  <div class="fondohome">
+  <ion-card class="ion-margin" *ngIf="clase">
+      <ion-card-subtitle>{{clase.fecha}}</ion-card-subtitle>
+      <ion-card-title>clase {{ clase.numero }}</ion-card-title>
+      <ion-accordion-group>
+        <ion-accordion>
+          <ion-item lines="full" slot="header" color="light">
+            <ion-label class="">Codigo QR</ion-label>
+          </ion-item>
+          <div slot="content">
+            <div class="div-qr">
+              <ngx-qrcode
+                class="qrcode"
+                [value]="value"
+                [width]="500"
+                [errorCorrectionLevel]="errorCorrectionLevel">
+              </ngx-qrcode>
+              <ion-title color="dark">{{value}}</ion-title>
+            </div>
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+  </ion-card>
+
+  <ion-card *ngIf="usuario && clase" class="ion-margin">
+    <ion-accordion-group>
+      <ion-accordion>
+        <ion-item lines="full" slot="header" color="light">
+          <ion-label class="">Alumnos clase </ion-label>
+        </ion-item>
+        <div slot="content">
+          <ion-item lines="full" *ngFor="let al of clase.alumnos">
+            <ion-label>{{ al.nombre }}</ion-label>
+            <ion-label class="color-verde" slot="end" *ngIf="al.asistencia=='presente'">{{ al.asistencia}}</ion-label>
+            <ion-label class="color-rojo" slot="end" *ngIf="al.asistencia=='ausente'">{{ al.asistencia}}</ion-label>
+            <ion-icon class="color-verde" *ngIf="al.asistencia=='presente'" name="checkmark-outline"></ion-icon>
+            <ion-icon class="color-rojo" *ngIf="al.asistencia=='ausente'" name="close-outline"></ion-icon>
+          </ion-item>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ion-card>
+  </div>
+</ion-content>

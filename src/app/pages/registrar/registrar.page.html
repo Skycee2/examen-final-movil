@@ -1,0 +1,52 @@
+<ion-content>
+  <form [formGroup]="usuario" (ngSubmit)="registrar()">
+    <div class="fondo">
+      <ion-card>
+        <img src="../../../assets/imagen/2560px-Logo_DuocUC.svg.png" alt="" width="150px">
+        <img src="../../../assets/imagen/registrar-icon.png" alt="" width="90px">
+
+        <ion-item>
+          <ion-label color="dark" position="stacked">Rut:</ion-label>
+          <ion-input type="text" placeholder="Ingrese rut" formControlName="rut"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label color="dark" position="stacked">Nombre completo:</ion-label>
+          <ion-input type="text" placeholder="Ingrese nombre completo" formControlName="nom_completo"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label color="dark" position="stacked">Correo institucional:</ion-label>
+          <ion-input type="text" placeholder="Ingrese correo" formControlName="correo"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label color="dark" position="stacked">Fecha nacimiento:</ion-label>
+          <ion-input type="date" placeholder="fecha de nacimiento" formControlName="fecha_nac"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label color="dark" position="stacked">Semestre:</ion-label>
+          <ion-input type="number" placeholder="Ingrese semestre" formControlName="semestre"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label color="dark" position="stacked">Contraseña:</ion-label>
+          <ion-input type="password" placeholder="contrasena123" formControlName="contrasena"></ion-input>
+        </ion-item>
+
+        <ion-item >
+          <ion-label position="stacked">Repita Contraseña</ion-label>
+          <ion-input type="password" placeholder="Ingrese nuevamente contraseña" [(ngModel)]="verificar_password"
+            [ngModelOptions]="{standalone: 'true'}"></ion-input>
+        </ion-item>
+
+        <ion-button  expand="full" color="warning" shape="round" type="submit" ><ion-icon name="person-add-outline" slot="end"></ion-icon>Registrar</ion-button>
+        <ion-button routerLink="/login" expand="block" shape="round" class="ion-margin-top">
+          <ion-icon name="home" slot="end"></ion-icon>
+          Volver
+        </ion-button>
+      </ion-card>
+    </div>
+  </form>
+</ion-content>

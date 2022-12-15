@@ -1,0 +1,17 @@
+.toolbar{
+    --background: linear-gradient(#0050a5,  #676ddb);
+  }
+.fondo{
+    height: 100vh;
+    background-image: url(../../../assets/imagen/bubble.jpg);
+    background-size: cover;
+    text-align: center;
+}
+.color{
+    color:#ffffff;
+}
+
+ion-card-header{
+    --background: linear-gradient(#0050a5,  #676ddb);
+}
+

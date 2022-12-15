@@ -1,0 +1,53 @@
+
+ion-toolbar{
+    --background: linear-gradient(#0050a5,  #676ddb);
+
+}
+
+
+.fondo{
+    height: 100vh;
+    background-image: url(../../../assets/imagen/fondoazul.jfif);
+    background-size: cover;
+    text-align: center;
+}
+
+ion-title{
+    font-family: Merriweather;
+    font-weight: bolder;
+}
+
+ion-card {
+    --background: linear-gradient(#0050a5,  #676ddb);
+    margin: auto;
+    top: 2vh;
+    height: 94vh;
+    width: 80vw;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: space-around;
+    ion-item {
+        --background: none;
+    }
+    ion-label{
+        margin-top: 5px;
+    }
+
+}
+ion-button{
+    width: 90%;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 5px;
+}
+
+@media (max-width: 500px) {
+    .fondo {
+        ion-card {
+            width: 80vw;
+        }
+    }
+}
+

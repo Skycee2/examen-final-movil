@@ -1,0 +1,20 @@
+.toolbar{
+  --background: linear-gradient(#0050a5,  #676ddb);
+  }
+
+
+ion-content{
+  --background: linear-gradient(#0050a5,  #676ddb);
+}
+
+ion-title{
+  color: black;
+}
+h1{
+  text-align: center;
+}
+
+ion-item{
+  --flex-direction: column;
+  --background: linear-gradient(#0050a5,  #676ddb);
+}

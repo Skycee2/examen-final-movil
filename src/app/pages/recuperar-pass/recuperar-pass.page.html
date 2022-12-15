@@ -1,0 +1,24 @@
+<ion-content class="">
+  <div class="fondo">
+    <ion-card>
+      <img src="../../../assets/imagen/2560px-Logo_DuocUC.svg.png" alt="" width="500px">
+      <img class="imagen_login" src="../../../assets/imagen/candado2.png " width="200px" />
+
+      <ion-card-header>
+        <ion-card-title>Recuperar contraseña</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+
+        <ion-item>
+          <ion-label position="stacked">Correo:</ion-label>
+          <ion-input type="text" placeholder="Ingrese correo " [(ngModel)]="correo"></ion-input>
+        </ion-item>
+        <ion-button expand="full" color="warning" shape="round" (click)="recuperarContra()">Enviar correo </ion-button>
+        <ion-button routerLink="/login" expand="block" shape="round" class="ion-margin-top">
+          <ion-icon name="home" slot="start"></ion-icon>
+          Volver al inicio
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

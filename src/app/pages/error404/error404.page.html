@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-title>ERROR 404</ion-title>
+    <ion-button color="warning" slot="end" (click)="presentAlert()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <h1>
+    No encontramos la página
+  </h1>
+  <ion-img src="{{personaje_img}}"></ion-img>
+  <ion-item>
+    <h2> Nombre: {{personaje_name}} </h2>
+  </ion-item>
+  <ion-item>
+    <h2> Estado: {{personaje_status}} </h2>
+  </ion-item>
+  <ion-item>
+    <h2> Especie: {{personaje_species}} </h2>
+  </ion-item>
+
+
+  <ion-button routerLink="/login" expand="full" color="warning" class="ion-margin-top">
+    <ion-icon name="home" slot="start"></ion-icon>
+    Volver al inicio
+  </ion-button>
+
+</ion-content>

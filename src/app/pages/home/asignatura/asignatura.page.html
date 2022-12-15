@@ -1,0 +1,58 @@
+
+<ion-content>
+  <div class="fondohome">
+  <ion-card *ngIf="asignatura">
+    <ion-card-header>
+      <ion-card-subtitle>{{ asignatura.sigla_asig}}</ion-card-subtitle>
+      <ion-card-title>{{ asignatura.nom_asig }}</ion-card-title>
+      <ion-card-subtitle *ngIf="profesor">{{ profesor.nombre }}</ion-card-subtitle>
+  
+    </ion-card-header>
+    <ion-accordion-group>
+      <ion-accordion>
+        <ion-item lines="full" slot="header" color="light">
+          <ion-label class="">Alumnos: </ion-label>
+        </ion-item>
+        <div slot="content">
+          <ion-item lines="full" *ngFor="let al of asignatura.alumno">
+            <ion-label>{{ al.nom_completo }}</ion-label>
+            <ion-label slot="end">{{ al.rut}}</ion-label>
+          </ion-item>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+    <ion-button  *ngIf="usuario.tipo=='profesor'"  (click)="crearClase()">Crear Clase</ion-button>
+
+    
+    <ion-item *ngIf="usuario.tipo=='alumno' || usuario.tipo == 'admin'">
+      <ion-input type="text" placeholder="ingrese codigo" [(ngModel)]="codigoClase"></ion-input> 
+      <ion-button color="success" (click)="marcarAsistencia()" slot="end">
+        marcar asistencia
+      </ion-button>
+    </ion-item>
+  </ion-card>
+
+
+  <ion-card *ngIf="usuario && clases && usuario.tipo=='profesor'">
+    <ion-card-header>
+      <ion-card-title>Clases</ion-card-title>
+    </ion-card-header>
+    <ion-item *ngFor="let cl of clases" (click)="irClase(cl.id)">
+      <ion-label>clase  {{cl.numero}}</ion-label>
+     <ion-label slot="end">{{ cl.fecha }}</ion-label>
+    </ion-item>
+  </ion-card>
+  <ion-card *ngIf="usuario && clases && (usuario.tipo=='alumno' || usuario.tipo == 'admin')">
+    <ion-card-header>
+      <ion-card-title>Clases</ion-card-title>
+    </ion-card-header>
+    <ion-item *ngFor="let cl of claseAlumnos">
+      <ion-label>clase  {{ cl.numero }}</ion-label>
+     <ion-label class="color-verde" slot="end" *ngIf="cl.asistencia=='presente'">{{ cl.asistencia}}</ion-label>
+            <ion-label class="color-rojo" slot="end" *ngIf="cl.asistencia=='ausente'">{{ cl.asistencia}}</ion-label>
+            <ion-icon class="color-verde" *ngIf="cl.asistencia=='presente'" name="checkmark-outline"></ion-icon>
+            <ion-icon class="color-rojo" *ngIf="cl.asistencia=='ausente'" name="close-outline"></ion-icon>
+    </ion-item>
+  </ion-card>
+</div>
+</ion-content>

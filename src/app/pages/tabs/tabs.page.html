@@ -1,0 +1,46 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title slot="start">Hola {{usuario.nom_completo}} !</ion-title>
+    <ion-button slot="end" (click)="logout()">Cerrar sesión</ion-button>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <div class="fondohome">
+
+  </div>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+
+      <ion-tab-button tab="administrador" *ngIf="usuario && usuario.tipo=='administrador'">
+        <ion-icon name="construct-outline"></ion-icon>
+        <ion-label>Administrador</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="admin-clases" *ngIf="usuario && usuario.tipo =='administrador'">
+        <ion-icon name="book-outline"></ion-icon>
+        <ion-label>Administrar clases</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="home" *ngIf="usuario && usuario.tipo =='profesor'">
+        <ion-icon name="attach-outline"></ion-icon>
+        <ion-label>Docente</ion-label>
+        <ion-badge>1</ion-badge>
+      </ion-tab-button>
+
+
+      <ion-tab-button tab="home" *ngIf="usuario && usuario.tipo =='alumno'">
+        <ion-icon name="school-outline"></ion-icon>
+        <ion-label>Alumno</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="perfil/">
+        <ion-icon name="person-circle-outline"></ion-icon>
+        <ion-label>Perfil</ion-label>
+      </ion-tab-button>
+
+
+    </ion-tab-bar>
+  </ion-tabs>
+
+</ion-content>

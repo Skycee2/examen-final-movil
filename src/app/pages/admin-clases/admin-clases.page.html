@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-title slot="start">Administrar clases</ion-title>
+    <ion-button color="warning" slot="end" (click)="presentAlert()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card-header>
+    Gestionar clase :
+  </ion-card-header>
+  
+  <div class="fondo">
+    <ion-card-content>
+
+      <form [formGroup]="asignatura" >
+        <ion-item>
+          <ion-label position="stacked">Sigla de la asignatura:</ion-label>
+          <ion-input type="text" placeholder="ejemplo:PGY001D" formControlName="sigla_asig"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Nombre asigantura:</ion-label>
+          <ion-input type="text" placeholder="Ingrese nombre de la asignatura" formControlName="nom_asig"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-select placeholder="Seleccione profesor" formControlName="profe_asig">
+            <ion-select-option *ngFor="let p of profesores" [value]="p.id">{{p.nom_completo}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-select  placeholder="Seleccione alumno" formControlName="alumno" [compareWith]="compareWith" [multiple]="true">
+            <ion-select-option *ngFor="let a of alumnos" [value]="a">{{a.nom_completo}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+
+        <ion-button (click)="registraAsig()">Registrar asignatura</ion-button>
+        <ion-button (click)="modificarAsig()">Modificar</ion-button>
+        <ion-button (click)="limpiarAsig()">Limpiar</ion-button>
+      </form>
+
+    </ion-card-content>
+
+    <ion-card-content>
+      <h1>Lista de asignaturas</h1>
+
+      <ion-list *ngFor="let asig of asignaturas">
+        <ion-card>
+          <ion-item>
+            <ion-card-header>
+              <ion-card-title>{{asig.nom_asig}}</ion-card-title>
+              <ion-card-subtitle>{{asig.sigla_asig}}</ion-card-subtitle>
+              <ion-card-subtitle>{{asig.profe_asig}}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-button slot="end" color="warning" (click)="buscarAsig(asig.id_asig)">Buscar</ion-button>
+            <ion-button slot="end" color="danger" (click)="eliminarAsig(asig.id_asig)">Eliminar</ion-button>
+          </ion-item>
+          <ion-card-content>
+          </ion-card-content>
+        </ion-card>
+      </ion-list>
+    </ion-card-content>
+  </div>
+</ion-content>

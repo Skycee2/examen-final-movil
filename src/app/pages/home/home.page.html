@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-title slot="start" class="titulo-admin ">Inicio</ion-title>
+    <ion-button color="warning" slot="end" (click)="presentAlert()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="fondohome">
+    <ion-item class="ion-margin">
+      <ion-title>Asignaturas:</ion-title>
+    </ion-item>
+
+    <ion-card *ngFor="let a of asignaturas" (click)="irDetalle(a.id_asig)" >
+      <ion-card-header>
+        <ion-card-subtitle>{{a.nom_asig + '_' + a.sigla_asig}}</ion-card-subtitle>
+        <ion-card-subtitle>{{a.profe_asig.nombre}}</ion-card-subtitle>
+        <ion-card-subtitle>alumnos: {{ a.num_alumnos}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+
+
+
+
+  </div>
+
+
+</ion-content>

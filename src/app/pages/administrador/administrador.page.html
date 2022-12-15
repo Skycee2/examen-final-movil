@@ -1,0 +1,86 @@
+<ion-content class="">
+  <ion-header>
+    <ion-toolbar class="toolbar">
+      <ion-title slot="start">Administrador de usuarios</ion-title>
+      <ion-button color="warning" slot="end" (click)="logoutAlert()"><ion-icon
+          name="log-out-outline"></ion-icon></ion-button>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card-content>
+    <form [formGroup]="usuario" (ngSubmit)="registrar()">  
+      <ion-item>
+        <ion-label position="stacked">Rut:</ion-label>
+        <ion-input type="text" placeholder="Ingrese rut con puntos y guión" formControlName="rut"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Nombre completo:</ion-label>
+        <ion-input type="text" placeholder="Ingrese nombre" formControlName="nom_completo"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Correo institucional:</ion-label>
+        <ion-input type="text" placeholder="Ingrese correo" formControlName="correo"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label position="stacked">Fecha nacimiento:</ion-label>
+        <ion-input type="date" placeholder="Ingrese fecha nacimiento" formControlName="fecha_nac" [(ngModel)]="fecha_nac"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Semestre</ion-label>
+        <ion-input type="text" placeholder="Ingrese semestre" formControlName="semestre"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label> </ion-label>
+        <ion-select slot="start" placeholder="tipo de usuario" formControlName="tipo_usuario">
+          <ion-select-option *ngFor="let j of tipo_usuario">{{j.tipo_usuario}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Contraseña:</ion-label>
+        <ion-input type="password" placeholder="Ingrese contraseña" formControlName="contrasena"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Repita Contraseña:</ion-label>
+        <ion-input type="password" placeholder="Ingrese nuevamente contraseña" [(ngModel)]="verificar_password" [ngModelOptions]="{standalone: 'true'}"></ion-input>
+      </ion-item>
+
+      <ion-button type="submit" color="warning">Registrar</ion-button>
+      <ion-button (click)="modificar()">Modificar</ion-button>
+      <ion-button (click)="limpiar()">Limpiar</ion-button>
+    </form>
+  </ion-card-content>
+
+  <ion-card-content> 
+    <h1>Lista de usuarios</h1>
+    <div *ngIf="usuario.length != 0; else elseBlock">
+      <ion-list *ngFor="let usuario of usuarios">
+        <ion-card>
+          <ion-item>
+            <ion-card-header>
+              <ion-card-title>{{usuario.nom_completo}}</ion-card-title>
+              <ion-card-subtitle>{{usuario.rut}} - {{usuario.fecha_nac}} - {{usuario.semestre}} </ion-card-subtitle>
+            </ion-card-header>
+            <ion-button slot="end" color="warning" (click)="buscar(usuario.id)">Buscar</ion-button>
+            <ion-button slot="end" color="danger" (click)="eliminar(usuario.id)">Eliminar</ion-button>
+          </ion-item>
+          <ion-card-content>
+            {{usuario.tipoUsuario}}
+          </ion-card-content>
+        </ion-card>
+      </ion-list>
+    </div>
+    <ng-template #elseBlock>
+      <p>No existen usuarios</p>
+    </ng-template>
+
+
+  </ion-card-content>
+
+</ion-content>

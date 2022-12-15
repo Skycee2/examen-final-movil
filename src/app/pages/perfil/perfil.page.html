@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-title slot="start">Perfil</ion-title>
+    <ion-button color="warning" slot="end" (click)="presentAlert()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="usuario">
+  <div class="fondo">
+    <ion-card>
+
+      <ion-avatar>
+        <img alt="Silhouette of a person's head" slot="start" src="../../../assets/imagen/avatar1.png" />
+      </ion-avatar>
+
+      <ion-label>
+        <h1>Bienvenido {{usuario.nom_completo}}!!!</h1>
+      </ion-label>
+      <img class="imagen_login" src="../../../assets/imagen/img-login.png " alt="imagen_login" width="100px" />
+
+      <ion-label>
+        <h2> Rut : {{usuario.rut}} </h2>
+        <p></p>
+      </ion-label>
+
+      <ion-label>
+        <h2> Nombre: {{usuario.nom_completo}} </h2>
+        <p></p>
+      </ion-label>
+
+      <ion-label>
+        <h2>Correo institucional : {{usuario.correo}} </h2>
+        <p></p>
+      </ion-label>
+
+      <ion-label>
+        <h2>Fecha de nacimiento : {{usuario.fecha_nac}} </h2>
+        <p></p>
+      </ion-label>
+
+      <ion-label>
+        <h2>Semestre : {{usuario.semestre}} </h2>
+        <p></p>
+      </ion-label>
+
+      <ion-label>
+        <p></p>
+      </ion-label>
+
+    </ion-card>
+  </div>
+</ion-content>
